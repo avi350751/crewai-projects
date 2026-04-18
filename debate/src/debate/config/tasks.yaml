@@ -1,0 +1,27 @@
+propose_task:
+  description: >
+    You are proposing a motion {motion}
+    Come up with a compelling motion that can be debated. 
+    The motion should be clear, concise, and thought-provoking, encouraging both sides to present. strong arguments. Consider current events, societal issues, or philosophical questions that would make for an engaging debate.
+  expected_output: >
+    Your clear argument in favor of the motion, in a concise manner.
+  agent: debater
+  output_file: output/propose.md
+
+oppose_task:
+  description: >
+    You are opposing a motion {motion}
+    Come up with a compelling argument against the motion. 
+    The argument should be clear, concise, and thought-provoking, encouraging both sides to present. strong arguments. Consider current events, societal issues, or philosophical questions that would make for an engaging debate.
+  expected_output: >
+    Your clear argument against the motion, in a concise manner.
+  agent: debater
+  output_file: output/oppose.md
+
+decide:
+  description: >
+    Review the arguments presented by both sides and decides which side presented a better case.
+  expected_output: >
+    You decide which side is more convincing, and why.
+  agent: judge
+  output_file: output/decision.md
