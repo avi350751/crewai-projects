@@ -1,0 +1,1 @@
+The best stock for investment is Evommune (EVO) due to its promising trial results and significant upside potential following its successful IPO.
