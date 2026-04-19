@@ -1,0 +1,7 @@
+coding_task:
+  description: >
+    Write a Python code to achieve this {assignment}.
+  expected_output: >
+    A markdown file with the code output and the test results
+  agent: coder
+  output_file: output/code_and_output.md
