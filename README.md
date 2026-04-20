@@ -1,6 +1,6 @@
 # CrewAI Practice Projects
 
-A comprehensive practice project demonstrating multiple CrewAI use cases and patterns. This workspace contains three distinct crew implementations showcasing different capabilities of the CrewAI framework.
+A comprehensive practice project demonstrating multiple CrewAI use cases and patterns. This workspace contains five distinct crew implementations showcasing different capabilities of the CrewAI framework.
 
 ## 📋 Project Structure
 
@@ -43,20 +43,54 @@ crewai/
 │   ├── output/                      # Stock research outputs
 │   └── tests/
 │
-└── financial_researcher/           # Financial Researcher Crew - Company research & analysis
+├── financial_researcher/           # Financial Researcher Crew - Company research & analysis
+│   ├── pyproject.toml
+│   ├── src/financial_researcher/
+│   │   ├── __init__.py
+│   │   ├── main.py                 # Financial researcher execution script
+│   │   ├── crew.py                 # Crew configuration with agents and tasks
+│   │   ├── config/
+│   │   │   ├── agents.yaml         # Agent definitions
+│   │   │   └── tasks.yaml          # Task definitions
+│   │   └── tools/
+│   │       ├── __init__.py
+│   │       └── custom_tool.py      # Custom tools for financial researcher
+│   ├── knowledge/                   # Knowledge base for research
+│   ├── output/                      # Financial research outputs
+│   └── tests/
+│
+├── engineering_team/               # Engineering Team Crew - Full-stack development
+│   ├── pyproject.toml
+│   ├── README.md
+│   ├── .env
+│   ├── src/engineering_team/
+│   │   ├── __init__.py
+│   │   ├── main.py                 # Engineering team execution script
+│   │   ├── crew.py                 # Crew configuration with agents and tasks
+│   │   ├── config/
+│   │   │   ├── agents.yaml         # Agent definitions
+│   │   │   └── tasks.yaml          # Task definitions
+│   │   └── tools/
+│   ├── knowledge/                   # Knowledge base for engineering
+│   ├── output/                      # Generated code and applications
+│   │   ├── accounts.py             # Generated Python module
+│   │   ├── app.py                  # Generated Gradio UI application
+│   │   └── test_accounts.py        # Generated test file
+│   └── tests/
+│
+└── coder/                          # Coder Crew - Code generation and execution
     ├── pyproject.toml
-    ├── src/financial_researcher/
+    ├── .env
+    ├── src/coder/
     │   ├── __init__.py
-    │   ├── main.py                 # Financial researcher execution script
+    │   ├── main.py                 # Coder execution script
     │   ├── crew.py                 # Crew configuration with agents and tasks
     │   ├── config/
     │   │   ├── agents.yaml         # Agent definitions
     │   │   └── tasks.yaml          # Task definitions
     │   └── tools/
-    │       ├── __init__.py
-    │       └── custom_tool.py      # Custom tools for financial researcher
-    ├── knowledge/                   # Knowledge base for research
-    ├── output/                      # Financial research outputs
+    ├── knowledge/                   # Knowledge base for coding
+    ├── output/                      # Generated code outputs
     └── tests/
 ```
 
@@ -162,7 +196,92 @@ python src/financial_researcher/main.py
 
 ---
 
-## 🚀 Getting Started
+### 4. **Engineering Team Crew** (`engineering_team/`)
+A multi-agent software development team that collaboratively builds complete software systems from requirements to deployment.
+
+**Purpose:** Generates complete, functional software applications with backend logic, frontend UI, and test coverage based on detailed requirements.
+
+**Agents:**
+- **Engineering Lead** - Analyzes requirements and creates architecture design
+- **Backend Engineer** - Implements backend logic with code execution capability
+- **Frontend Engineer** - Creates user interfaces (including Gradio UIs)
+- **Test Engineer** - Develops comprehensive test suites
+
+**Workflow:**
+1. Parse and analyze software requirements
+2. Design system architecture and API contracts
+3. Generate backend implementation code
+4. Create frontend/UI components
+5. Generate and execute test cases
+6. Output complete, production-ready code
+
+**Key Features:**
+- Code execution capability (safe mode with sandboxing)
+- Generates complete Python modules with classes and methods
+- Creates functional Gradio UI applications
+- Generates unit tests automatically
+- Architecture-focused design before implementation
+- Multi-agent collaboration with specialized roles
+
+**Example Requirements:**
+```
+A simple account management system for a trading simulation platform.
+The system should allow users to create accounts, deposit and withdraw funds...
+```
+
+**Usage:**
+```bash
+cd engineering_team
+python src/engineering_team/main.py
+```
+
+**Output Files:**
+- `output/accounts.py` - Generated backend module
+- `output/app.py` - Generated Gradio UI application
+- `output/test_accounts.py` - Generated test file
+- `output/accounts.py_design.md` - Design documentation
+
+---
+
+### 5. **Coder Crew** (`coder/`)
+An autonomous code generation and execution crew that can write and execute Python programs for specific assignments.
+
+**Purpose:** Takes programming assignments and generates, tests, and executes Python code solutions.
+
+**Agents:**
+- **Coder** - Expert Python programmer with code execution capability
+
+**Workflow:**
+1. Receive programming assignment
+2. Analyze requirements
+3. Generate Python solution code
+4. Execute code safely in sandbox
+5. Validate results
+6. Return working solution
+
+**Key Features:**
+- Safe code execution mode with timeout protection
+- Can handle complex mathematical and algorithmic problems
+- Direct code execution feedback
+- Automatic error handling and retries
+- Perfect for programming challenges and automation tasks
+
+**Example Assignment:**
+```
+Write a Python program to calculate the first 20 numbers of the series
+and multiply the total by 5: 3-5+7-9+11-...
+```
+
+**Usage:**
+```bash
+cd coder
+python src/coder/main.py
+```
+
+**Output Files:**
+- `output/` - Generated code solutions and execution results
+
+---
 
 ### Prerequisites
 - Python 3.10+
@@ -187,6 +306,8 @@ Or install all projects:
 pip install -e debate
 pip install -e stock_picker
 pip install -e financial_researcher
+pip install -e engineering_team
+pip install -e coder
 ```
 
 ### Configuration
@@ -267,6 +388,10 @@ This practice project demonstrates:
 - ✅ Structured output formatting
 - ✅ Configuration management with YAML
 - ✅ Real-world use cases (debate, stock research, financial analysis)
+- ✅ **Software development with multi-agent teams** (Engineering Team)
+- ✅ **Safe code execution and automation** (Coder)
+- ✅ **Gradio UI generation** (Engineering Team)
+- ✅ **Dynamic code generation and testing** (Engineering Team, Coder)
 
 ---
 
