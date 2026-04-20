@@ -1,0 +1,51 @@
+design_task:
+  description: >
+    Take the high level requirements here and prepare a detailed design for the backend developer;
+    everything should be in 1 python module; describe the function and method signature in the module.
+    Here are the requirements: {requirements}
+    Important : Only output the design in markdown format, laying out in detail the classess and functions in the module.
+  expected_output: >
+    A detaile design for the engineer , identifying the classes and functions in the module.
+  agent: engineering_lead
+  output_file: output/{module_name}_design.md
+
+code_task:
+  description: >
+    Write a Python module that implements the design described by the engineering lead. 
+    Here are the requirements: {requirements}
+  expected_output: >
+    A Python module that implements the design and achieves the requirements.
+    Important: Output only the raw Python code without any markdown formatting , code block delimeters
+    or backticks. The output should be valid Python code that can be directly saved to a file and executed.
+  agent: backend_engineer
+  context:
+    - design_task
+  output_file: output/{module_name}
+
+frontend_task:
+  description: >
+    Write a Gradio UI that can test the functionality of the Python module implemented by the backend engineer.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A simple Gradio UI in the module app.py that deomnstrates the given backend class
+    The file should be ready so that it can be run as-is, in the same directory as the backend module.
+    Important: Output only the raw Python code without any markdown formatting , code block delimeters
+    or backticks. The output should be valid Python code that can be directly saved to a file and executed.
+  agent: frontend_engineer
+  context:
+    - code_task
+  output_file: output/app.py
+
+test_task:
+  description: >
+    Write unit tests that can ensure the functionality of the Python module implemented by the backend engineer.
+    The tests should cover all possible edge cases and scenarios to ensure the robustness of the module.
+  expected_output: >
+    A test_{module_name} module that tests the backend module.
+    Important: Output only the raw Python code without any markdown formatting , code block delimeters
+    or backticks. The output should be valid Python code that can be directly saved to a file and executed.
+  agent: test_engineer
+  context:
+    - code_task
+  output_file: output/test_{module_name}
+
